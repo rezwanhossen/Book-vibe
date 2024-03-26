@@ -26,7 +26,7 @@ const router = createBrowserRouter([
       {
         path: "/booklist/:id",
         element: <BookDital></BookDital>,
-        loader: () => fetch("datas.json"),
+        loader: () => fetch("../datas.json"),
       },
       {
         path: "/listedBook",
@@ -35,6 +35,7 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <ReadBook></ReadBook>,
+            loader: () => fetch("../datas.json"),
           },
           {
             path: "wishlist",

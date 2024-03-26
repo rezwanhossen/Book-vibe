@@ -1,10 +1,27 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import { FaHashtag } from "react-icons/fa";
-const BookDital = () => {
-  const books = useLoaderData([]);
-  const { id } = useParams();
-  const book = books.find((book) => book.id === id);
+import { SaveReadBook } from "../Utility/Utility";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useState } from "react";
 
+const BookDital = () => {
+  const books = useLoaderData();
+  const { id } = useParams();
+  const idInt = parseFloat(id);
+  const book = books.find((book) => book.id === idInt);
+  const [alreadyRead, setAlreadyRead] = useState(false);
+  const [alartWish, setAlaerWish] = useState(false);
+  const handelRead = () => {
+    if (alreadyRead) {
+      toast.error("Success Notification !");
+    } else {
+      SaveReadBook(idInt);
+      toast.success("Success Notification !");
+      setAlreadyRead(true);
+    }
+  };
+  const handelWish = () => {};
   return (
     <div className=" md:flex rounded-xl justify-between p-5">
       <div className="flex-1 bg-slate-50 p-5">
@@ -62,10 +79,13 @@ const BookDital = () => {
           </tr>
         </table>
         <div className="flex gap-7">
-          <button className="btn">Read</button>
+          <button onClick={handelRead} className="btn">
+            Read
+          </button>
           <button className="btn btn-primary">Wishlist</button>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

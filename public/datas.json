@@ -1,6 +1,6 @@
 [
   {
-    "id": "001",
+    "id": 1,
     "bookName": "The Great Gatsby",
     "author": "F. Scott Fitzgerald",
     "image": "https://i.ibb.co/YbxSCfV/book1.jpg",
@@ -13,7 +13,7 @@
     "yearOfPublishing": 1925
   },
   {
-    "id": "002",
+    "id": 2,
     "bookName": "To Kill a Mockingbird",
     "author": "Harper Lee",
     "image": "https://i.ibb.co/QCKY19B/book2.jpg",
@@ -26,7 +26,7 @@
     "yearOfPublishing": 1960
   },
   {
-    "id": "003",
+    "id": 3,
     "bookName": "The 1984",
     "author": "George Orwell",
     "image": "https://i.ibb.co/KN6NmgG/book3.jpg",
@@ -39,7 +39,7 @@
     "yearOfPublishing": 1949
   },
   {
-    "id": "004",
+    "id": 4,
     "bookName": "The Catcher in the Rye",
     "author": "J.D. Salinger",
     "image": "https://i.ibb.co/MMxLVgC/book4.png",
@@ -52,7 +52,7 @@
     "yearOfPublishing": 1951
   },
   {
-    "id": "005",
+    "id": 5,
     "bookName": "Pride and Prejudice",
     "author": "Jane Austen",
     "image": "https://i.ibb.co/RbqL9xb/book5.jpg",
@@ -65,7 +65,7 @@
     "yearOfPublishing": 1813
   },
   {
-    "id": "006",
+    "id": 6,
     "bookName": "The Hobbit",
     "author": "J.R.R. Tolkien",
     "image": "https://i.ibb.co/0VnjDxt/book6.jpg",
