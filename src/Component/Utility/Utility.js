@@ -13,8 +13,6 @@ const SaveReadBook = (id) => {
   if (!exist) {
     StorRedBooks.push(id);
     localStorage.setItem("read-Book", JSON.stringify(StorRedBooks));
-  } else {
-    alert("jjj");
   }
 };
 export { SaveReadBook, getStorRedBooks };

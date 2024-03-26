@@ -12,6 +12,8 @@ import ReadPags from "./Component/ReadPags/ReadPags.jsx";
 import Error from "./Component/Erroe/Error.jsx";
 import ReadBook from "./Component/ListedBook/ReadBook.jsx";
 import Wishlist from "./Component/ListedBook/Wishlist.jsx";
+import Contact from "./Component/Contact/Contact.jsx";
+import Blogs from "./Component/Contact/Blogs.jsx";
 
 const router = createBrowserRouter([
   {
@@ -40,12 +42,21 @@ const router = createBrowserRouter([
           {
             path: "wishlist",
             element: <Wishlist></Wishlist>,
+            loader: () => fetch("../datas.json"),
           },
         ],
       },
       {
         path: "/readPags",
         element: <ReadPags></ReadPags>,
+      },
+      {
+        path: "/blogs",
+        element: <Blogs></Blogs>,
+      },
+      {
+        path: "/contact",
+        element: <Contact></Contact>,
       },
     ],
   },

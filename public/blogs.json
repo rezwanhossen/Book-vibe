@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "Exploring the Wonders of Nature",
+    "img": "https://i.ibb.co/60Rmh8c/natur.jpg",
+    "author": "John Doe",
+    "category": "Nature",
+    "blog": "Nature is an endless source of inspiration. From the towering mountains to the vast oceans, each element of nature offers a unique perspective. In this blog, we delve into the mesmerizing beauty of the natural world, exploring its wonders and unraveling its mysteries."
+  },
+  {
+    "id": 2,
+    "name": "The Art of Culinary Delights",
+    "img": "https://i.ibb.co/gR3t0Pd/food.jpg",
+    "author": "Jane Smith",
+    "category": "Food",
+    "blog": "Food is not just sustenance; it's an art form. Join us on a culinary journey as we savor the flavors of different cuisines, discover new recipes, and explore the cultural significance of food. From exotic spices to mouthwatering desserts, prepare to tantalize your taste buds."
+  },
+  {
+    "id": 3,
+    "name": "Unraveling the Mysteries of Space",
+    "img": "https://i.ibb.co/RbqL9xb/book5.jpg",
+    "author": "Michael Johnson",
+    "category": "Science",
+    "blog": "The universe is a vast expanse, filled with countless stars, galaxies, and mysteries waiting to be uncovered. In this blog, we embark on an astronomical journey, exploring the wonders of space, discussing the latest scientific discoveries, and pondering the age-old question: are we alone in the universe?"
+  },
+  {
+    "id": 4,
+    "name": "Mastering the Art of Photography",
+    "img": "https://i.ibb.co/zXvLGfx/art.jpg",
+    "author": "Emily Brown",
+    "category": "Art",
+    "blog": "Photography is more than just capturing images; it's a form of expression. Join us as we delve into the world of photography, learning about different techniques, experimenting with composition, and discovering the beauty in everyday moments. Whether you're a seasoned pro or a novice enthusiast, there's always something new to explore behind the lens."
+  }
+]

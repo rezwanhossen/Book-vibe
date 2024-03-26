@@ -4,6 +4,7 @@ import { SaveReadBook } from "../Utility/Utility";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
+import { SaveWishListBook } from "../Utility/getwishList";
 
 const BookDital = () => {
   const books = useLoaderData();
@@ -14,14 +15,23 @@ const BookDital = () => {
   const [alartWish, setAlaerWish] = useState(false);
   const handelRead = () => {
     if (alreadyRead) {
-      toast.error("Success Notification !");
+      toast.error("This book is already marked as read...!");
     } else {
       SaveReadBook(idInt);
-      toast.success("Success Notification !");
+      toast.success("Book marked as read !");
       setAlreadyRead(true);
     }
   };
-  const handelWish = () => {};
+  const handelWish = () => {
+    if (alartWish) {
+      toast.error("This book is already in your wishlist...!");
+    } else {
+      SaveWishListBook(idInt);
+      toast.success("Book added to your wishlist !");
+      setAlaerWish(true);
+    }
+  };
+
   return (
     <div className=" md:flex rounded-xl justify-between p-5">
       <div className="flex-1 bg-slate-50 p-5">
@@ -82,7 +92,9 @@ const BookDital = () => {
           <button onClick={handelRead} className="btn">
             Read
           </button>
-          <button className="btn btn-primary">Wishlist</button>
+          <button onClick={handelWish} className="btn btn-primary">
+            Wishlist
+          </button>
         </div>
       </div>
       <ToastContainer />
