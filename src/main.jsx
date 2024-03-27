@@ -14,6 +14,7 @@ import ReadBook from "./Component/ListedBook/ReadBook.jsx";
 import Wishlist from "./Component/ListedBook/Wishlist.jsx";
 import Contact from "./Component/Contact/Contact.jsx";
 import Blogs from "./Component/Contact/Blogs.jsx";
+import BlogDital from "./Component/Contact/BlogDital.jsx";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,11 @@ const router = createBrowserRouter([
       {
         path: "/blogs",
         element: <Blogs></Blogs>,
+      },
+      {
+        path: "/blog/:id",
+        element: <BlogDital></BlogDital>,
+        loader: () => fetch("../blogs.json"),
       },
       {
         path: "/contact",

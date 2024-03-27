@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { getStorwishListBooks } from "../Utility/getwishList";
 import { useEffect, useState } from "react";
 import { FaHashtag } from "react-icons/fa";
@@ -70,9 +70,12 @@ const Wishlist = () => {
                     Rating: {bookRead.rating}
                   </p>
                 </div>
-                <button className=" py-2 px-5 rounded-full text-white bg-success">
+                <Link
+                  to={`/booklist/${bookRead.id}`}
+                  className=" py-2 px-5 rounded-full text-white bg-success"
+                >
                   View Details
-                </button>
+                </Link>
               </div>
             </div>
           </div>

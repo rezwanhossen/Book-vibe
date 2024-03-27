@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { getStorRedBooks } from "../Utility/Utility";
 import { FaHashtag } from "react-icons/fa";
 import { CiLocationOn } from "react-icons/ci";
@@ -9,6 +9,7 @@ import { RiPagesLine } from "react-icons/ri";
 const ReadBook = () => {
   const books = useLoaderData();
   const [reedBooks, setreadBooks] = useState([]);
+
   useEffect(() => {
     const storRedBook = getStorRedBooks();
     if (books.length > 0) {
@@ -16,6 +17,11 @@ const ReadBook = () => {
       setreadBooks(readBook);
     }
   }, [books]);
+
+  const sortByratting = () => {
+    const sortRatting = [...reedBooks].sort((a, b) => b.rating - a.rating);
+    setreadBooks(sortRatting);
+  };
 
   return (
     <div>
@@ -71,9 +77,12 @@ const ReadBook = () => {
                     Rating: {bookRead.rating}
                   </p>
                 </div>
-                <button className=" py-2 px-5 rounded-full text-white bg-success">
+                <Link
+                  to={`/booklist/${bookRead.id}`}
+                  className=" py-2 px-5 rounded-full text-white bg-success"
+                >
                   View Details
-                </button>
+                </Link>
               </div>
             </div>
           </div>
