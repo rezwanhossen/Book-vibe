@@ -1,16 +1,49 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
-import { Link, Outlet } from "react-router-dom";
-// import ReadBook from "./ReadBook";
-// import Wishlist from "./Wishlist";
-import { SortReatting } from "../Utility/Function";
+import { Link } from "react-router-dom";
+import { getStorRedBooks } from "../Utility/Utility";
+import ReadBook from "./ReadBook";
+import Wishlist from "./Wishlist";
+import { getStorwishListBooks } from "../Utility/getwishList";
 
 const ListedBook = () => {
   const [tabindx, settabindx] = useState(0);
 
+  const [reedBooks, setreadBooks] = useState([]);
+  useEffect(() => {
+    const storRedBook = getStorRedBooks();
+    setreadBooks(storRedBook);
+  }, []);
+  const [wishdBooks, setwishBooks] = useState([]);
+  useEffect(() => {
+    const storRedBook = getStorwishListBooks();
+    setwishBooks(storRedBook);
+  }, []);
+
   const handelsortByratting = (filter) => {
     if (filter === "Rating") {
-      SortReatting();
+      let data = [...reedBooks];
+      let datas = [...wishdBooks];
+      const res = data.sort((a, b) => b.rating - a.rating);
+      const rest = datas.sort((a, b) => b.rating - a.rating);
+      setreadBooks(res);
+      setwishBooks(rest);
+    } else if (filter === "pag") {
+      let data = [...reedBooks];
+      let datas = [...wishdBooks];
+      const res = data.sort((a, b) => b.totalPages - a.totalPages);
+      const rest = datas.sort((a, b) => b.totalPages - a.totalPages);
+      setreadBooks(res);
+      setwishBooks(rest);
+    } else if (filter === "year") {
+      let data = [...reedBooks];
+      let datas = [...wishdBooks];
+      const res = data.sort((a, b) => b.yearOfPublishing - a.yearOfPublishing);
+      const rest = datas.sort(
+        (a, b) => b.yearOfPublishing - a.yearOfPublishing
+      );
+      setreadBooks(res);
+      setwishBooks(rest);
     }
   };
   return (
@@ -25,15 +58,17 @@ const ListedBook = () => {
           </summary>
           <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
             <li>
-              <Link to="" onClick={() => handelsortByratting("Rating")}>
-                Rating
+              <Link onClick={() => handelsortByratting("Rating")}>Rating</Link>
+            </li>
+            <li>
+              <Link onClick={() => handelsortByratting("pag")}>
+                Number of pages
               </Link>
             </li>
             <li>
-              <a>Number of pages</a>
-            </li>
-            <li>
-              <a>Publisher year</a>
+              <Link onClick={() => handelsortByratting("year")}>
+                Publisher year
+              </Link>
             </li>
           </ul>
         </details>
@@ -42,7 +77,6 @@ const ListedBook = () => {
       <div className=" my-10">
         <div className="flex border-b items-center -mx-4 overflow-x-auto overflow-y-hidden sm:justify-start flex-nowrap dark:bg-gray-100 dark:text-gray-800">
           <Link
-            to=""
             onClick={() => settabindx(0)}
             className={`flex items-center flex-shrink-0 px-5 py-3 space-x-2 ${
               tabindx === 0 ? " border border-b-0" : "border-b"
@@ -51,7 +85,6 @@ const ListedBook = () => {
             <span>Read Books</span>
           </Link>
           <Link
-            to={`wishlist`}
             onClick={() => settabindx(1)}
             className={`flex items-center flex-shrink-0 px-5 py-3 space-x-2 ${
               tabindx === 1 ? " border border-b-0" : "border-b"
@@ -61,7 +94,10 @@ const ListedBook = () => {
           </Link>
         </div>
       </div>
-      <Outlet></Outlet>
+      {tabindx == 0 && <ReadBook reedBooks={reedBooks}></ReadBook>}
+      {tabindx == 1 && <Wishlist wishdBooks={wishdBooks}></Wishlist>}
+
+      {/* <Outlet></Outlet> */}
     </div>
   );
 };

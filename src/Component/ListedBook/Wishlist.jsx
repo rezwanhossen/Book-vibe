@@ -1,20 +1,14 @@
 import { Link } from "react-router-dom";
-import { getStorwishListBooks } from "../Utility/getwishList";
-import { useEffect, useState } from "react";
+
 import { FaHashtag } from "react-icons/fa";
 import { CiLocationOn } from "react-icons/ci";
 import { MdPeopleAlt } from "react-icons/md";
 import { RiPagesLine } from "react-icons/ri";
 
-const Wishlist = () => {
-  const [reedBooks, setreadBooks] = useState([]);
-  useEffect(() => {
-    const storRedBook = getStorwishListBooks();
-    setreadBooks(storRedBook);
-  }, []);
+const Wishlist = ({ wishdBooks }) => {
   return (
     <div>
-      {reedBooks.map((bookRead) => (
+      {wishdBooks.map((bookRead) => (
         <div
           key={bookRead.id}
           className=" border shadow-md rounded-xl my-3 p-3"

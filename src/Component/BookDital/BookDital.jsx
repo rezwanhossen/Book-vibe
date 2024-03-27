@@ -1,38 +1,16 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import { FaHashtag } from "react-icons/fa";
-// import { SaveReadBook } from "../Utility/Utility";
+
 import "react-toastify/dist/ReactToastify.css";
 import { SaveReadBook, getStorRedBooks } from "../Utility/Utility";
 import { toast } from "react-toastify";
 import { SaveWishListBook } from "../Utility/getwishList";
-// import { useState } from "react";
-// import { SaveWishListBook } from "../Utility/getwishList";
 
 const BookDital = () => {
   const books = useLoaderData();
   const { id } = useParams();
   const idInt = parseFloat(id);
   const book = books.find((book) => book.id === idInt);
-  // const [alreadyRead, setAlreadyRead] = useState(false);
-  // const [alartWish, setAlaerWish] = useState(false);
-  // const handelRead = () => {
-  //   if (alreadyRead) {
-  //     toast.error("This book is already marked as read...!");
-  //   } else {
-  //     SaveReadBook(idInt);
-  //     toast.success("Book marked as read !");
-  //     setAlreadyRead(true);
-  //   }
-  // };
-  // const handelWish = () => {
-  //   if (alartWish) {
-  //     toast.error("This book is already in your wishlist...!");
-  //   } else {
-  //     SaveWishListBook(idInt);
-  //     toast.success("Book added to your wishlist !");
-  //     setAlaerWish(true);
-  //   }
-  // };
 
   const handelRead = (book) => {
     SaveReadBook(book);
@@ -45,7 +23,7 @@ const BookDital = () => {
       toast.error("Alrady you read");
     } else {
       SaveWishListBook(book);
-      toast.success("Added wishlist successfilly ");
+      // toast.success("Added wishlist successfilly ");
     }
   };
 

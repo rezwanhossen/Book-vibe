@@ -1,18 +1,11 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getStorRedBooks } from "../Utility/Utility";
+
 import { FaHashtag } from "react-icons/fa";
 import { CiLocationOn } from "react-icons/ci";
 import { MdPeopleAlt } from "react-icons/md";
 import { RiPagesLine } from "react-icons/ri";
 
-const ReadBook = () => {
-  const [reedBooks, setreadBooks] = useState([]);
-  useEffect(() => {
-    const storRedBook = getStorRedBooks();
-    setreadBooks(storRedBook);
-  }, []);
-
+const ReadBook = ({ reedBooks }) => {
   return (
     <div>
       {reedBooks.map((bookRead) => (

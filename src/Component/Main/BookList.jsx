@@ -4,7 +4,7 @@ const BookList = ({ book }) => {
   const { bookName, image, author, category, tags, rating, id } = book;
   return (
     <Link to={`/booklist/${id}`}>
-      <div className="card transition hover:scale-105 border-red-300 hover:border-green-400 border p-3 hover:shadow-2xl">
+      <div className="card transition md:hover:scale-105 border-red-300 hover:border-green-400 border p-3 hover:shadow-2xl">
         <figure>
           <img src={image} alt="Shoes" />
         </figure>
