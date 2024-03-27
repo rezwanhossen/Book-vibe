@@ -1,16 +1,15 @@
 const getStorwishListBooks = () => {
   const StorWishbook = localStorage.getItem("Wish-Book");
+
   if (StorWishbook) {
     return JSON.parse(StorWishbook);
   }
   return [];
 };
-const SaveWishListBook = (id) => {
+const SaveWishListBook = (book) => {
   const StorWishBooks = getStorwishListBooks();
-  const exist = StorWishBooks.find((itms) => itms === id);
-  if (!exist) {
-    StorWishBooks.push(id);
-    localStorage.setItem("Wish-Book", JSON.stringify(StorWishBooks));
-  }
+
+  StorWishBooks.push(book);
+  localStorage.setItem("Wish-Book", JSON.stringify(StorWishBooks));
 };
 export { getStorwishListBooks, SaveWishListBook };

@@ -1,10 +1,18 @@
 import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { Link, Outlet } from "react-router-dom";
+// import ReadBook from "./ReadBook";
+// import Wishlist from "./Wishlist";
+import { SortReatting } from "../Utility/Function";
 
 const ListedBook = () => {
   const [tabindx, settabindx] = useState(0);
-  const handelreadbook = (filter) => {};
+
+  const handelsortByratting = (filter) => {
+    if (filter === "Rating") {
+      SortReatting();
+    }
+  };
   return (
     <div>
       <div className=" flex justify-center bg-slate-100 p-5 rounded-md my-3">
@@ -16,8 +24,10 @@ const ListedBook = () => {
             Sort By <IoIosArrowDown />
           </summary>
           <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
-            <li onClick={() => handelreadbook("Rating")}>
-              <a>Rating</a>
+            <li>
+              <Link to="" onClick={() => handelsortByratting("Rating")}>
+                Rating
+              </Link>
             </li>
             <li>
               <a>Number of pages</a>

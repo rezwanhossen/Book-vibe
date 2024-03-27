@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getStorwishListBooks } from "../Utility/getwishList";
 import { useEffect, useState } from "react";
 import { FaHashtag } from "react-icons/fa";
@@ -7,15 +7,11 @@ import { MdPeopleAlt } from "react-icons/md";
 import { RiPagesLine } from "react-icons/ri";
 
 const Wishlist = () => {
-  const books = useLoaderData();
   const [reedBooks, setreadBooks] = useState([]);
   useEffect(() => {
     const storRedBook = getStorwishListBooks();
-    if (books.length > 0) {
-      const readBook = books.filter((book) => storRedBook.includes(book.id));
-      setreadBooks(readBook);
-    }
-  }, [books]);
+    setreadBooks(storRedBook);
+  }, []);
   return (
     <div>
       {reedBooks.map((bookRead) => (

@@ -1,34 +1,51 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import { FaHashtag } from "react-icons/fa";
-import { SaveReadBook } from "../Utility/Utility";
-import { ToastContainer, toast } from "react-toastify";
+// import { SaveReadBook } from "../Utility/Utility";
 import "react-toastify/dist/ReactToastify.css";
-import { useState } from "react";
+import { SaveReadBook, getStorRedBooks } from "../Utility/Utility";
+import { toast } from "react-toastify";
 import { SaveWishListBook } from "../Utility/getwishList";
+// import { useState } from "react";
+// import { SaveWishListBook } from "../Utility/getwishList";
 
 const BookDital = () => {
   const books = useLoaderData();
   const { id } = useParams();
   const idInt = parseFloat(id);
   const book = books.find((book) => book.id === idInt);
-  const [alreadyRead, setAlreadyRead] = useState(false);
-  const [alartWish, setAlaerWish] = useState(false);
-  const handelRead = () => {
-    if (alreadyRead) {
-      toast.error("This book is already marked as read...!");
-    } else {
-      SaveReadBook(idInt);
-      toast.success("Book marked as read !");
-      setAlreadyRead(true);
-    }
+  // const [alreadyRead, setAlreadyRead] = useState(false);
+  // const [alartWish, setAlaerWish] = useState(false);
+  // const handelRead = () => {
+  //   if (alreadyRead) {
+  //     toast.error("This book is already marked as read...!");
+  //   } else {
+  //     SaveReadBook(idInt);
+  //     toast.success("Book marked as read !");
+  //     setAlreadyRead(true);
+  //   }
+  // };
+  // const handelWish = () => {
+  //   if (alartWish) {
+  //     toast.error("This book is already in your wishlist...!");
+  //   } else {
+  //     SaveWishListBook(idInt);
+  //     toast.success("Book added to your wishlist !");
+  //     setAlaerWish(true);
+  //   }
+  // };
+
+  const handelRead = (book) => {
+    SaveReadBook(book);
   };
-  const handelWish = () => {
-    if (alartWish) {
-      toast.error("This book is already in your wishlist...!");
+  const handelWish = (book) => {
+    const reddata = getStorRedBooks();
+    const exist = reddata.find((item) => item.id === book.id);
+
+    if (exist) {
+      toast.error("Alrady you read");
     } else {
-      SaveWishListBook(idInt);
-      toast.success("Book added to your wishlist !");
-      setAlaerWish(true);
+      SaveWishListBook(book);
+      toast.success("Added wishlist successfilly ");
     }
   };
 
@@ -88,16 +105,16 @@ const BookDital = () => {
             </td>
           </tr>
         </table>
+
         <div className="flex gap-7">
-          <button onClick={handelRead} className="btn">
+          <button onClick={() => handelRead(book)} className="btn">
             Read
           </button>
-          <button onClick={handelWish} className="btn btn-primary">
+          <button onClick={() => handelWish(book)} className="btn btn-primary">
             Wishlist
           </button>
         </div>
       </div>
-      <ToastContainer />
     </div>
   );
 };

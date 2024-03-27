@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getStorRedBooks } from "../Utility/Utility";
 import { FaHashtag } from "react-icons/fa";
 import { CiLocationOn } from "react-icons/ci";
@@ -7,21 +7,11 @@ import { MdPeopleAlt } from "react-icons/md";
 import { RiPagesLine } from "react-icons/ri";
 
 const ReadBook = () => {
-  const books = useLoaderData();
   const [reedBooks, setreadBooks] = useState([]);
-
   useEffect(() => {
     const storRedBook = getStorRedBooks();
-    if (books.length > 0) {
-      const readBook = books.filter((book) => storRedBook.includes(book.id));
-      setreadBooks(readBook);
-    }
-  }, [books]);
-
-  const sortByratting = () => {
-    const sortRatting = [...reedBooks].sort((a, b) => b.rating - a.rating);
-    setreadBooks(sortRatting);
-  };
+    setreadBooks(storRedBook);
+  }, []);
 
   return (
     <div>
