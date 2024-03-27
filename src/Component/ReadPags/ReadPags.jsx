@@ -22,7 +22,7 @@ const ReadPags = () => {
       .then((res) => res.json())
       .then((data) => {
         const datas = data.map((item) => ({
-          name: item.bookName.slice(0, 15),
+          name: item.bookName.slice(0, 10),
           pag: item.totalPages,
         }));
         setdata(datas);
@@ -30,8 +30,8 @@ const ReadPags = () => {
   }, []);
 
   return (
-    <div>
-      <BarChart width={1000} height={500} data={data}>
+    <div className=" w-full">
+      <BarChart width={600} height={500} data={data}>
         <XAxis dataKey="name" />
         <YAxis />
         <Bar dataKey="pag" fill="#8884d8" shape={<TriangleBar />} />
